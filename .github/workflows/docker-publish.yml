@@ -24,6 +24,9 @@ jobs:
         uses: docker/metadata-action@v5
         with:
           images: ${{ secrets.DOCKERHUB_USERNAME }}/fastapi-hello-world
+          tags: |
+            type=raw,value=v${{ github.run_number }}
+            type=raw,value=latest
 
       - name: Build and push Docker image
         uses: docker/build-push-action@v5
